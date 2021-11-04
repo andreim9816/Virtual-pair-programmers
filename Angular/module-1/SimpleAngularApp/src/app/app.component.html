@@ -1,0 +1,22 @@
+this is the app root component
+
+<!--provide an alias for the component using # so it can be used later-->
+<!--using # (aka template reference) is used for referencing in html or in class-->
+<app-header (pageChangedEvent)="incrementHitCounter($event)" #headerComponent></app-header>
+
+<!--v1-->
+<app-page1 [hidden]="currentPage !== 1"></app-page1>
+<app-page2 #page2 [hidden]="currentPage !== 2"></app-page2>
+<app-page3 #page3 [hidden]="currentPage !== 3"></app-page3>
+
+<!--v2-->
+<!-- With ngIf we say "include or exclude from the DOM"-->
+<!-- * - structural directive -->
+<!--<app-page1 *ngIf="headerComponent.pageRequested === 1"></app-page1>-->
+<!--<app-page2 *ngIf="headerComponent.pageRequested === 2" #page2></app-page2>-->
+<!--<app-page3 *ngIf="headerComponent.pageRequested === 3"></app-page3>-->
+
+<!--template reference / alias using #-->
+<!--@Input decorator used for accessing fields in html-->
+<app-footer #footer [lastAccessed]="startTime"></app-footer>
+<button (click)="updateLastAccess()">Update last access</button>
